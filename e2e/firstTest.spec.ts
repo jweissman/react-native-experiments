@@ -6,17 +6,21 @@ describe('Authentication tests', () => {
         await reloadApp();
     });
 
-    it('should change the text when buttons are pressed', async () => {
-        await expect(element(by.id("MainText"))).toExist();
-        await expect(element(by.label("Press a button to start"))).toBeVisible();
+    // it('can report on text values of elements', async () => {
+    //     await expect(element(by.id("MainText"))).toHaveLabel("Press a button to start");
+    // });
 
-        await element(by.id("FirstButton")).tap();
-        await expect(element(by.label("First button pressed!"))).toBeVisible();
+    it('should gather my favorite albums when the get-albums button is clicked', async () => {
+        await expect(element(by.id("FavAlbumButton"))).toExist();
+        await expect(element(by.id("album-list"))).toNotExist();
+        await element(by.id("FavAlbumButton")).tap();
 
-        await element(by.id("SecondButton")).tap();
-        await expect(element(by.label("Second button pressed!"))).toBeVisible();
+        await expect(element(by.id("album-0"))).toHaveLabel("Nevermind");
+        await expect(element(by.id("album-1"))).toHaveLabel("Pet Sounds");
+        await expect(element(by.id("album-2"))).toHaveLabel("What's Going On");
 
-        await element(by.id("FirstButton")).tap();
-        await expect(element(by.label("First button pressed!"))).toBeVisible();
+        // there should be 3 albums
+        // the first is "nevermind", by nirvana :D
+        // i'm on a plane / i can't complain / etc.
     });
 });
