@@ -1,6 +1,8 @@
 import React from 'react';
 import {Text, TouchableOpacity, View, FlatList, SafeAreaView} from 'react-native';
 import AlbumView, { Album } from './src/components/compounds/AlbumView';
+import { Linking } from 'react-native';
+import { WebBrowser } from 'expo';
 import styles from './src/Style';
 
 type State = {
@@ -34,6 +36,14 @@ export default class App extends React.Component<State> {
         }
     }
 
+    openNovantHealthWebsite = () => {
+        WebBrowser.openBrowserAsync("https://www.novanthealth.org");
+    }
+
+    launchExternalApp = () => {
+        Linking.openURL("YouTube://1krc73eU5yU");
+    }
+
     render() {
         return (
             <SafeAreaView style={styles.container}>
@@ -43,6 +53,22 @@ export default class App extends React.Component<State> {
                 >
                     {this.state.text}
                 </Text>
+
+                <TouchableOpacity
+                    style={styles.button}
+                    testID="LoadNovantHealthDotOrg"
+                    onPress={this.openNovantHealthWebsite}
+                >
+                    <Text style={styles.buttonText}>Novant Health Website</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity
+                    style={styles.button}
+                    testID="LaunchExternalApp"
+                    onPress={this.launchExternalApp}
+                >
+                    <Text style={styles.buttonText}>LaunchExternalApp</Text>
+                </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.button}
