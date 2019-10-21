@@ -8,6 +8,7 @@
     "eject": "expo eject",
     "test": "jest src",
     "e2e": "detox test --configuration ios.sim",
+    "e2e:ci": "detox test --configuration ios.staging",
     "dl_expo_bins": "./scripts/dl_expo_bins_ios",
     "postinstall": "patch-package"
   },
@@ -40,6 +41,11 @@
     "configurations": {
       "ios.sim": {
         "binaryPath": "bin/Exponent.app",
+        "type": "ios.simulator",
+        "name": "iPhone 11"
+      },
+      "ios.staging": {
+        "binaryPath": "stagingBuild/my-novant.app",
         "type": "ios.simulator",
         "name": "iPhone 11"
       }
