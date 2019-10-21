@@ -6,9 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "e2e:ios": "detox test --configuration ios.sim",
-    "e2e:android": "detox test --configuration android.emu",
-    "dl_expo_bins": "./scripts/dl_expo_bins"
+    "e2e": "detox test --configuration ios.sim",
+    "dl_expo_bins": "./scripts/dl_expo_bins_ios",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "expo": "^33.0.0",
@@ -27,6 +27,7 @@
     "detox-expo-helpers": "^0.6.0",
     "expo-detox-hook": "^1.0.10",
     "jest": "^24.8.0",
+    "patch-package": "^6.2.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   },
@@ -36,11 +37,6 @@
         "binaryPath": "bin/Exponent.app",
         "type": "ios.simulator",
         "name": "iPhone 11"
-      },
-      "android.emu": {
-        "binaryPath": "bin/Exponent.apk",
-        "type": "android.emulator",
-        "name": "Pixel_3a_XL_Pie"
       }
     },
     "test-runner": "jest",

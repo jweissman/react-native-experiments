@@ -15,9 +15,9 @@ describe('Authentication tests', () => {
         await expect(element(by.id("album-list"))).toNotExist();
         await element(by.id("FavAlbumButton")).tap();
 
-        await expect(element(by.id("album-0"))).toHaveLabel("Nevermind");
-        await expect(element(by.id("album-1"))).toHaveLabel("Pet Sounds");
-        await expect(element(by.id("album-2"))).toHaveLabel("What's Going On");
+        await expect(element(by.id("album-0"))).toHaveLabel("Nevermind by Nirvana");
+        await expect(element(by.id("album-1"))).toHaveLabel("Pet Sounds by The Beach Boys");
+        await expect(element(by.id("album-2"))).toHaveLabel("What's Going On by Marvin Gaye");
 
         // there should be 3 albums
         // the first is "nevermind", by nirvana :D
