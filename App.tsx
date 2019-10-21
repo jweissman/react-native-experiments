@@ -1,17 +1,7 @@
 import React from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, FlatList, SafeAreaView} from 'react-native';
-
-type Album = {
-    id: number
-    title: string
-    artist: string
-}
-
-function AlbumView({ album, index }: { album: Album, index: number }) {
-  return <Text style={styles.text} testID={`album-${index}`}>
-        {album.title} by {album.artist}
-    </Text>
-}
+import {Text, TouchableOpacity, View, FlatList, SafeAreaView} from 'react-native';
+import AlbumView, { Album } from './src/components/compounds/AlbumView';
+import styles from './src/Style';
 
 type State = {
   text: string,
@@ -84,28 +74,3 @@ export default class App extends React.Component<State> {
         );
     }
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    text: {
-        margin: 20,
-        fontSize: 30,
-    },
-    button: {
-        justifyContent: "center",
-        backgroundColor: '#f2c113',
-        width: 200,
-        height: 50,
-        borderRadius: 5,
-        margin: 10,
-    },
-    buttonText: {
-        fontSize: 25,
-        textAlign: "center",
-    }
-});
