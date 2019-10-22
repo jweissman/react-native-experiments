@@ -1,12 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 import styles from '../../Style';
-
-type Album = {
-    id: number
-    title: string
-    artist: string
-}
+import Album from '../../values/Album';
 
 function AlbumView({ album, index }: { album: Album, index: number }) {
   return <Text style={styles.text} testID={`album-${index}`}>
@@ -15,4 +10,3 @@ function AlbumView({ album, index }: { album: Album, index: number }) {
 }
 
 export default AlbumView;
-export { Album };

@@ -1,16 +1,24 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform, StatusBar} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
+        ...Platform.select({
+            android: {
+                marginTop: StatusBar.currentHeight
+            }
+        })
     },
-    text: {
-        margin: 20,
-        fontSize: 30,
-    },
+    // container: {
+    //     flex: 1,
+    //     backgroundColor: '#fff',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    // },
+    // text: {
+    //     margin: 20,
+    //     fontSize: 30,
+    // },
     button: {
         justifyContent: "center",
         backgroundColor: '#f2c113',

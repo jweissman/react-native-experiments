@@ -13,9 +13,16 @@
   },
   "dependencies": {
     "expo": "^33.0.0",
+    "expo-font": "~5.0.1",
+    "expo-web-browser": "~5.0.2",
+    "native-base": "^2.13.8",
     "react": "16.8.3",
     "react-dom": "^16.8.6",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz"
+    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native-vector-icons": "^6.6.0",
+    "react-navigation": "^4.0.10",
+    "react-navigation-stack": "^1.10.2",
+    "react-navigation-tabs": "^2.5.6"
   },
   "devDependencies": {
     "@types/detox": "^12.8.2",
