@@ -1,38 +1,46 @@
 import React from 'react';
-import { Container, Text, Footer, Header, Button, Title, Body, ListItem, List } from 'native-base';
-import { DoctorPresenter } from '../../values/Doctor';
+import { Text, ListItem, Body, Right, Icon } from 'native-base';
+import { DoctorPresenter, Doctor } from '../../values/Doctor';
 import { NavProps } from '../../values/NavProps';
 import { DoctorProps } from '../../contexts/DoctorContext';
 import withDoctors from '../../contexts/withDoctors';
+import ListTemplate from '../templates/ListTemplate';
+
+class MyDoctorsList extends ListTemplate<Doctor> {}
 
 class MyDoctorsPage extends React.Component<NavProps & DoctorProps> {
+    handlePress = (doctor: Doctor) => {
+        this.props.navigation.navigate("DoctorDetailView", {
+            doctorId: doctor.id 
+        });
+    }
+
+    handleBack = () => {
+        this.props.navigation.navigate("Welcome");
+    }
+
     render() {
         let { doctors } = this.props;
-        return (
-            <Container>
-                <Header>
-                    <Title testID="PageTitle">My Doctors!</Title>
-                </Header>
-
-                <Body>
-                    <Text>Doctors list...</Text>
-                    {doctors && <>
-                        <Text>I have {doctors.length} doctors</Text>
-                        <List testID="DoctorsList" dataArray={doctors} keyExtractor={(doctor) => String(doctor.id)} renderItem={({ item: doctor, index }) => <ListItem button onPress={() => this.props.navigation.navigate("DoctorDetailView", { doctorId: doctor.id })}>
-                            <Text key={doctor.id} testID={`Doctor ${index}`}>
-                                {DoctorPresenter.for(doctor).title()}
-                            </Text>
-                        </ListItem>} />
-                    </>}
-                </Body>
-
-                <Button testID="GoBackHome" onPress={() => this.props.navigation.navigate("Welcome")}>
-                    <Text>Take me back home</Text>
-                </Button>
-                <Footer>
-                </Footer>
-            </Container>
-        );
+        return <MyDoctorsList
+            title="My Doctors!"
+            items={doctors}
+            onNavigateBack={this.handleBack}
+            renderItem={({ item: doctor, index }) =>
+                <ListItem
+                    button
+                    onPress={() => this.handlePress(doctor)}
+                >
+                    <Body>
+                        <Text key={doctor.id} testID={`Doctor ${index}`}>
+                            {DoctorPresenter.for(doctor).title()}
+                        </Text>
+                    </Body>
+                    <Right>
+                        <Icon active name="arrow-forward" />
+                    </Right>
+                </ListItem>
+            }
+        />;
     }
 }
 

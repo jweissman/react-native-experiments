@@ -16,20 +16,21 @@ describe('Patty Patient', () => {
         await expect(element(by.id("album-2"))).toHaveLabel("What's Going On by Marvin Gaye");
     });
 
-    fit('should navigate to my list of doctors', async () => {
+    it('should navigate to my list of doctors', async () => {
         await expect(element(by.id("PageTitle"))).toHaveLabel("My Novant!");
         await expect(element(by.id("GoToDoctorsList"))).toExist();
         await element(by.id("GoToDoctorsList")).tap();
         await expect(element(by.id("PageTitle"))).toHaveLabel("My Doctors!");
 
-        await expect(element(by.id("DoctorsList"))).toExist();
+        // await expect(element(by.id("DoctorsList"))).toExist();
         await expect(element(by.id("Doctor 0"))).toHaveLabel("Doctor Marvel, Neurology");
         await expect(element(by.id("Doctor 1"))).toHaveLabel("Doctor Strange, Psychology");
 
         await element(by.id("Doctor 1")).tap();
         await expect(element(by.id("PageTitle"))).toHaveLabel("Doctor Strange (DETAIL)")
-
-        // await element(by.id("GoBackHome")).tap();
-        // await expect(element(by.id("PageTitle"))).toHaveLabel("My Novant!");
+        await element(by.id("GoBackHome")).tap();
+        await expect(element(by.id("PageTitle"))).toHaveLabel("My Doctors!");
+        await element(by.id("GoBack")).tap();
+        await expect(element(by.id("PageTitle"))).toHaveLabel("My Novant!");
     });
 });

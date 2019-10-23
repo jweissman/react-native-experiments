@@ -9,7 +9,8 @@
     "test": "jest src",
     "e2e": "detox test --configuration ios.sim",
     "dl_expo_bins": "./scripts/dl_expo_bins_ios",
-    "postinstall": "patch-package"
+    "postinstall": "patch-package",
+    "verify": "yarn test && yarn e2e"
   },
   "dependencies": {
     "expo": "^33.0.0",
@@ -17,7 +18,7 @@
     "expo-web-browser": "~5.0.2",
     "native-base": "^2.13.8",
     "react": "16.8.3",
-    "react-dom": "^16.8.6",
+    "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
@@ -39,6 +40,7 @@
     "expo-detox-hook": "^1.0.10",
     "jest": "^24.8.0",
     "jest-enzyme": "^7.1.1",
+    "jest-expo": "^34.0.0",
     "patch-package": "^6.2.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
@@ -59,6 +61,6 @@
     "setupFilesAfterEnv": [
       "<rootDir>src/setupTests.js"
     ],
-    "preset": "react-native"
+    "preset": "jest-expo"
   }
 }

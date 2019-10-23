@@ -1,7 +1,7 @@
-import { Doctor, describeDoctor } from "./Doctor";
+import { Doctor, DoctorPresenter } from "./Doctor";
 
 describe("Doctors", () => {
-    let doctor: Doctor = { name: "Marvel", speciality: "Neurology" };
+    let doctor: Doctor = { id: -1, name: "Marvel", speciality: "Neurology" };
     describe("properties", () => {
         it('has a name', () => {
             expect(doctor.name).toEqual("Marvel")
@@ -10,6 +10,6 @@ describe("Doctors", () => {
 
     })
     it('can be described', () => {
-        expect(describeDoctor(doctor)).toEqual("Dr. Marvel, Neurology")
+        expect(DoctorPresenter.for(doctor).title()).toEqual("Doctor Marvel, Neurology")
     })
 })

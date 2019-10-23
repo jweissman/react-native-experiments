@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow, ShallowWrapper, mount, ReactWrapper } from 'enzyme';
-import AlbumView, { Album } from './AlbumView';
-import {Text} from 'react-native';
+import AlbumView from './AlbumView';
+import {Text} from 'native-base';
+import Album from '../../values/Album';
 
 let albums: { [name: string]: Album } = {
     trick: {
@@ -27,28 +28,12 @@ describe("Album view", () => {
     let wrapper: ShallowWrapper;
 
     describe("structure", () => {
-        it('displays the album name', () => {
+        it('displays the album title and artist', () => {
             wrapper = renderComponent(albums.trick);
-            let albumListEntry = wrapper.find(Text).first();
-            let message = albumListEntry.shallow().text();
-            expect(message).toContain("Trick");
+            expect(wrapper.containsMatchingElement(<Text>Trick by (Sandy) Alex G</Text>)).toEqual(true);
 
             wrapper = renderComponent(albums.ten);
-            albumListEntry = wrapper.find(Text).first();
-            message = albumListEntry.shallow().text();
-            expect(message).toContain("Ten");
-        });
-
-        it('displays the album artist', () => {
-            wrapper = renderComponent(albums.trick);
-            let entry = wrapper.find(Text).first();
-            let message = entry.shallow().text();
-            expect(message).toContain("(Sandy) Alex G")
-
-            wrapper = renderComponent(albums.ten);
-            entry = wrapper.find(Text).first();
-            message = entry.shallow().text();
-            expect(message).toContain("Pearl Jam")
+            expect(wrapper.containsMatchingElement(<Text>Ten by Pearl Jam</Text>)).toEqual(true);
         });
     });
 
