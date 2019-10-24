@@ -1,11 +1,14 @@
 import React from 'react';
 import { Doctor } from '../values/Doctor';
 
-export type DoctorState = { doctors: Doctor[] }
-export type DoctorProps = DoctorState;
+export type DoctorProps = {
+    doctors: Doctor[],
+    fetchDoctors: () => void
+}
 
-const DoctorContext = React.createContext<DoctorState>({
+const DoctorContext = React.createContext<DoctorProps>({
     doctors: [],
+    fetchDoctors: () => {},
 }) 
 
 const DoctorConsumer = DoctorContext.Consumer;
