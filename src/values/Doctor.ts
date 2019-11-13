@@ -2,7 +2,7 @@ type Speciality = 'Neurology' | 'Oneirology' | 'Psychology'
 type Doctor = {
     id: number,
     name: string,
-    speciality: Speciality,
+    specialization: Speciality,
 }
 
 class DoctorPresenter {
@@ -11,7 +11,7 @@ class DoctorPresenter {
         return new DoctorPresenter(doctor);
     }
     title() {
-        return `Doctor ${this.doctor.name}, ${this.doctor.speciality}`;
+        return `Doctor ${this.doctor.name}, ${this.doctor.specialization}`;
     }
 }
 

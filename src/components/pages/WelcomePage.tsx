@@ -1,42 +1,22 @@
 import React from 'react';
 import { Linking } from 'react-native';
-import { AppLoading } from 'expo';
 import styles from '../../Style';
 import { Container, Text, Footer, Header, Left, Button, Icon, Title, Body, Right, Content, FooterTab, Card, CardItem } from 'native-base';
-import { Feather } from '@expo/vector-icons';
-import * as Font from 'expo-font'
 import * as WebBrowser from 'expo-web-browser'
 import AlbumList from '../molecules/AlbumList';
-import { NavProps } from '../../values/NavProps';
 
-export class Welcome extends React.Component<NavProps, {
-    isReady: boolean;
-}> {
-    state: {
-        isReady: boolean;
-    } = {
-            isReady: false,
-        };
-    async componentDidMount() {
-        await Font.loadAsync({
-            // Roboto: require('../../../native-base/Fonts/Roboto.ttf'),
-            // Roboto_medium: require('../../../native-base/Fonts/Roboto_medium.ttf'),
-            ...Feather.font,
-        });
-        this.setState({ isReady: true });
-    }
+export class Welcome extends React.Component {
     openNovantHealthWebsite = () => {
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
     };
+
     launchExternalApp = () => {
         Linking.openURL("YouTube://1krc73eU5yU");
     };
+
     render() {
-        if (!this.state.isReady) {
-            return <AppLoading />;
-        }
         return (<Container style={styles.container}>
-            <Header>
+            <Header style={styles.header}>
                 <Left>
                     <Button transparent>
                         <Icon name='menu' />
@@ -56,7 +36,7 @@ export class Welcome extends React.Component<NavProps, {
                         <Body>
                             <Text>
                                 How are you feeling today?
-                                </Text>
+                            </Text>
                         </Body>
                     </CardItem>
                 </Card>

@@ -1,6 +1,13 @@
 import {StyleSheet, Platform, StatusBar} from 'react-native';
 
+const palette = {
+  aubergine: '#3E1D5A'
+}
+
 const styles = StyleSheet.create({
+    header: {
+        backgroundColor: palette.aubergine,
+    },
     container: {
         flex: 1,
         ...Platform.select({
