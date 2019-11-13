@@ -19,13 +19,15 @@ export class Welcome extends React.Component<NavProps, {
         };
     async componentDidMount() {
         await Font.loadAsync({
-            // Roboto: require('../../../native-base/Fonts/Roboto.ttf'),
-            // Roboto_medium: require('../../../native-base/Fonts/Roboto_medium.ttf'),
+            Roboto: require('../../../node_modules/native-base/Fonts/Roboto.ttf'),
+            Roboto_medium: require('../../../node_modules/native-base/Fonts/Roboto_medium.ttf'),
+            Whitney_book: require('../../../assets/Whitney-Book.otf'),
             ...Feather.font,
         });
         this.setState({ isReady: true });
     }
     openNovantHealthWebsite = () => {
+        console.log("NH");
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
     };
     launchExternalApp = () => {
@@ -48,7 +50,7 @@ export class Welcome extends React.Component<NavProps, {
                 <Right />
             </Header>
             <Content padder>
-                <Text style={{ fontSize: 32 }}>
+                <Text style={{ fontSize: 32, fontFamily: 'Whitney_book' }}>
                     Welcome to MyNovant!
                     </Text>
                 <Card>

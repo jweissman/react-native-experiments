@@ -8,9 +8,11 @@ import MyDoctorsPage from './src/components/pages/MyDoctorsPage';
 import { Welcome } from './src/components/pages/Welcome';
 import { Container } from "native-base";
 import DoctorProvider from './src/contexts/DoctorProvider';
+import {LoginPage} from "./src/components/pages/LoginPage";
 
 const AppNavigation = createSwitchNavigator(
     {
+        Login: { screen: LoginPage },
         Welcome: { screen: Welcome },
         DoctorsPage: { screen: MyDoctorsPage },
         DoctorDetailView: { screen: MyDoctorDetailsPage }
