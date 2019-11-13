@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
             }
         })
     },
+    bodyText: {
+      fontFamily: 'Whitney_book',
+      fontSize: 24,
+    },
     button: {
         justifyContent: "center",
         backgroundColor: '#f2c113',

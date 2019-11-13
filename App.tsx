@@ -7,8 +7,12 @@ import MyDoctorDetailsPage from './src/components/pages/MyDoctorDetailsPage';
 import MyDoctorsPage from './src/components/pages/MyDoctorsPage';
 import { Welcome } from './src/components/pages/Welcome';
 import { Container } from "native-base";
+import { Feather } from '@expo/vector-icons';
+import * as Font from 'expo-font'
+
 import DoctorProvider from './src/contexts/DoctorProvider';
 import {LoginPage} from "./src/components/pages/LoginPage";
+import {AppLoading} from "expo";
 
 const AppNavigation = createSwitchNavigator(
     {
@@ -21,8 +25,24 @@ const AppNavigation = createSwitchNavigator(
 
 const AppContainer = createAppContainer(AppNavigation);
 
-class App extends Component {
+class App extends Component<{}, { isReady: boolean }> {
+    state = { isReady: false }
+
+    async componentDidMount() {
+        await Font.loadAsync({
+            Roboto: require('./node_modules/native-base/Fonts/Roboto.ttf'),
+            Roboto_medium: require('./node_modules/native-base/Fonts/Roboto_medium.ttf'),
+            Whitney_book: require('./assets/Whitney-Book.otf'),
+            ...Feather.font,
+        });
+        this.setState({ isReady: true });
+    }
+
     render() {
+        if (!this.state.isReady) {
+            return <AppLoading />;
+        }
+
         return <DoctorProvider>
             <AppContainer />
         </DoctorProvider>;

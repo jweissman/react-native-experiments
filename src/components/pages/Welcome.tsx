@@ -17,15 +17,15 @@ export class Welcome extends React.Component<NavProps, {
     } = {
             isReady: false,
         };
-    async componentDidMount() {
-        await Font.loadAsync({
-            Roboto: require('../../../node_modules/native-base/Fonts/Roboto.ttf'),
-            Roboto_medium: require('../../../node_modules/native-base/Fonts/Roboto_medium.ttf'),
-            Whitney_book: require('../../../assets/Whitney-Book.otf'),
-            ...Feather.font,
-        });
-        this.setState({ isReady: true });
-    }
+    // async componentDidMount() {
+    //     await Font.loadAsync({
+    //         Roboto: require('../../../node_modules/native-base/Fonts/Roboto.ttf'),
+    //         Roboto_medium: require('../../../node_modules/native-base/Fonts/Roboto_medium.ttf'),
+    //         Whitney_book: require('../../../assets/Whitney-Book.otf'),
+    //         ...Feather.font,
+    //     });
+    //     this.setState({ isReady: true });
+    // }
     openNovantHealthWebsite = () => {
         console.log("NH");
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
