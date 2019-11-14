@@ -1,11 +1,9 @@
-// import RCTNetworking from 'RCTNetworking';
-
 type NovantEnv = { url: string, user: string, pass: string }
 const environments: { [key: string]: NovantEnv } = {
     local: {
         url: 'http://localhost:8080',
-        user: 'patty',
-        pass: 'cakes',
+        user: 'mlugo@pivotal.io',
+        pass: 'P3ek@b0o',
     },
     cloud: {
         // url: 'https://my-novant-api-thankful-squirrel.apps.pcfone.io',
@@ -29,31 +27,23 @@ class MyNovantApi {
     }
 
     authenticate = async ({ user, pass }: { user: string, pass: string }) => {
-        // return true;
         console.log("MyNovant#authenticate");
-        let body = JSON.stringify({ username: user, password: pass });
-        let url = this.loginUrl;
-        console.log("MyNovant#authenticate", { body, url });
+        let url = `${this.loginUrl}?email=${user}&password=${pass}`;
+        console.log("MyNovant#authenticate", { url });
         let form = new FormData();
-        form.append("username", user);
+        form.append("email", user);
         form.append("password", pass);
-        let response = await fetch(this.loginUrl, {
-            method: 'POST',
-            body: form,
-            headers: {
-            //     'Accept': 'application/json',
-            },
-        })
+        let response = await fetch(url, { method: 'POST', })
         console.log("MyNovant#authenticate status=", response.status);
         console.log("MyNovant#authenticate headers=", response.headers);
-
         if (response.ok) {
-            let theCookie = response.headers.get('Set-Cookie');
-            if (theCookie) {
-                let cookieValue = theCookie.split(';')[0].split('=')[1]
-                console.log("THE COOKIE", { cookieValue })
-                this.key = cookieValue;
+            let result = await response.json();
+            console.log("MyNovant#authenticate result=", result);
+            if (result['authenticated']) {
+                this.key = result['apiToken']
                 return true;
+            } else {
+                alert("login failed, please try again")
             }
         }
 
@@ -61,13 +51,12 @@ class MyNovantApi {
     }
 
     doctors = async () => {
-        // RCTNetworking.clearCookies()
         let doctors = []
         console.log("MyNovant#doctors")
         let result = await fetch(this.doctorsUrl, {
             credentials: 'omit',
             headers: {
-                'Cookie': `JSESSIONID=${this.key}`,
+                'Authorization': `Bearer ${this.key}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -82,5 +71,5 @@ class MyNovantApi {
     }
 }
 
-let MyNovant = new MyNovantApi(environments.cloud);
+let MyNovant = new MyNovantApi(environments.local);
 export default MyNovant;
