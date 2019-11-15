@@ -13,10 +13,11 @@ describe("DoctorProvider", () => {
     let wrapper: ReactWrapper;
     // we call fetch at the expected place, and put the data into doctors for consumption
     it('loads doctors from the web service', async () => {
-        let expectedDoctors: Doctor[] = [{ id: -9999, name: 'John', speciality: "Neurology" }]
+        let expectedDoctors: Doctor[] = [{ id: -9999, name: 'John', practice: "Neurology" }]
         let mockFetchPromise = Promise.resolve({
             json: () => Promise.resolve(expectedDoctors) 
-        })
+        });
+
         // @ts-ignore
         global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
 

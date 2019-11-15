@@ -1,22 +1,18 @@
 import React from "react";
 import {NavProps} from "../../values/NavProps";
-import {Button, Col, Container, Content, Footer, Grid, Header, Row, Text} from 'native-base';
-
+import {Button, Container, Content, Grid, Header, Row, Text, Form, Item as FormItem, Input, Label} from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
-import {View} from "react-native";
-import * as Font from "expo-font";
-import {Feather} from "@expo/vector-icons";
 import styles from "../../Style";
-
 
 const palette = {
     aubergine: '#512D6D',
     fuschia: '#813ec1',
-    // purple: 'rgb(119,58,176)',
 };
 
-export class LoginPage extends React.Component<NavProps, { isReady: boolean }> {
+type State = { user: string, pass: string }
 
+export class LoginPage extends React.Component<NavProps, State> {
+    state = { user: '', pass: '' };
     render() {
         return (
                 <Container
@@ -36,10 +32,33 @@ export class LoginPage extends React.Component<NavProps, { isReady: boolean }> {
                     <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
                         <Grid style={{alignItems: 'center', ...styles.bodyText}}>
                             <Row><Text style={{color: 'white', ...styles.bodyText}}>LOGO</Text></Row>
-                            <Row><Text style={{color: 'white'}}>USER</Text></Row>
-                            <Row><Text style={{color: 'white'}}>PASS</Text></Row>
+                            <Row style={{height: '20%'}}>
+                                <Form style={{ width: '100%'}}>
+                                    <FormItem floatingLabel>
+                                        <Label style={{color: 'white'}}>Username</Label>
+                                        <Input
+                                            onChangeText={(text) => this.setState({ user: text })}
+                                            value={this.state.user}
+                                        />
+                                    </FormItem>
+                                    <FormItem floatingLabel>
+                                        <Label style={{color: 'white'}}>Password</Label>
+                                        <Input
+                                            secureTextEntry={true}
+                                            onChangeText={(text) => this.setState({ pass: text })}
+                                            value={this.state.pass}
+                                        />
+                                    </FormItem>
+                                </Form>
+                            </Row>
+                            <Row>
+                                <Text style={{...styles.bodyText, color: 'white', fontSize: 18}}>
+                                    Create Account
+                                </Text>
+                            </Row>
                             <Row>
                                 <Button style={{
+                                    // marginTop: 20,
                                     height: 50,
                                     borderRadius: 35,
                                     padding: 50,

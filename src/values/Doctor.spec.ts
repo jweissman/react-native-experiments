@@ -1,11 +1,11 @@
 import { Doctor, DoctorPresenter } from "./Doctor";
 
 describe("Doctors", () => {
-    let doctor: Doctor = { id: -1, name: "Marvel", speciality: "Neurology" };
+    let doctor: Doctor = { id: -1, name: "Marvel", practice: "Neurology" };
     describe("properties", () => {
         it('has a name', () => {
             expect(doctor.name).toEqual("Marvel")
-            expect(doctor.speciality).toEqual("Neurology")
+            expect(doctor.practice).toEqual("Neurology")
         })
 
     })

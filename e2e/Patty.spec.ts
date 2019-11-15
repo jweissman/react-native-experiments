@@ -6,6 +6,7 @@ describe('Patty Patient', () => {
         await reloadApp();
     });
 
+
     it('should gather my favorite albums when the get-albums button is clicked', async () => {
         await expect(element(by.id("FavAlbumButton"))).toExist();
         await expect(element(by.id("album-list"))).toNotExist();
