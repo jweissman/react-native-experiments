@@ -9,23 +9,7 @@ import * as WebBrowser from 'expo-web-browser'
 import AlbumList from '../molecules/AlbumList';
 import { NavProps } from '../../values/NavProps';
 
-export class Welcome extends React.Component<NavProps, {
-    isReady: boolean;
-}> {
-    state: {
-        isReady: boolean;
-    } = {
-            isReady: false,
-        };
-    // async componentDidMount() {
-    //     await Font.loadAsync({
-    //         Roboto: require('../../../node_modules/native-base/Fonts/Roboto.ttf'),
-    //         Roboto_medium: require('../../../node_modules/native-base/Fonts/Roboto_medium.ttf'),
-    //         Whitney_book: require('../../../assets/Whitney-Book.otf'),
-    //         ...Feather.font,
-    //     });
-    //     this.setState({ isReady: true });
-    // }
+export class Welcome extends React.Component<NavProps> {
     openNovantHealthWebsite = () => {
         console.log("NH");
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
@@ -34,9 +18,6 @@ export class Welcome extends React.Component<NavProps, {
         Linking.openURL("YouTube://1krc73eU5yU");
     };
     render() {
-        if (!this.state.isReady) {
-            return <AppLoading />;
-        }
         return (<Container style={styles.container}>
             <Header>
                 <Left>

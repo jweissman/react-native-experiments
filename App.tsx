@@ -11,8 +11,8 @@ import { Feather } from '@expo/vector-icons';
 import * as Font from 'expo-font'
 
 import DoctorProvider from './src/contexts/DoctorProvider';
-import {LoginPage} from "./src/components/pages/LoginPage";
 import {AppLoading} from "expo";
+import LoginPage from './src/components/pages/LoginPage';
 
 const AppNavigation = createSwitchNavigator(
     {

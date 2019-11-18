@@ -9,6 +9,10 @@ import ListTemplate from '../templates/ListTemplate';
 class MyDoctorsList extends ListTemplate<Doctor> {}
 
 class MyDoctorsPage extends React.Component<NavProps & DoctorProps> {
+    componentDidMount() {
+        this.props.fetchDoctors();
+    }
+
     handlePress = (doctor: Doctor) => {
         this.props.navigation.navigate("DoctorDetailView", {
             doctorId: doctor.id 

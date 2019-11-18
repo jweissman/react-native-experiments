@@ -6,8 +6,15 @@ describe('Patty Patient', () => {
         await reloadApp();
     });
 
+    it('should login with valid credentials', async () => {
+        // given i enter valid credentials
+        await expect(element(by.id("Username"))).toExist();
+        await expect(element(by.id("Password"))).toExist();
+        // and i press "Log In"
+        // then i'm taken to homepage
+    })
 
-    it('should gather my favorite albums when the get-albums button is clicked', async () => {
+    xit('should gather my favorite albums when the get-albums button is clicked', async () => {
         await expect(element(by.id("FavAlbumButton"))).toExist();
         await expect(element(by.id("album-list"))).toNotExist();
         await element(by.id("FavAlbumButton")).tap();
@@ -17,7 +24,7 @@ describe('Patty Patient', () => {
         await expect(element(by.id("album-2"))).toHaveLabel("What's Going On by Marvin Gaye");
     });
 
-    it('should navigate to my list of doctors', async () => {
+    xit('should navigate to my list of doctors', async () => {
         await expect(element(by.id("PageTitle"))).toHaveLabel("My Novant!");
         await expect(element(by.id("GoToDoctorsList"))).toExist();
         await element(by.id("GoToDoctorsList")).tap();

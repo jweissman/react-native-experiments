@@ -1,20 +1,19 @@
 import React from "react";
 import store from "../Store";
 import DoctorContext, { DoctorProps } from "./DoctorContext";
+import MyNovant from "../system/MyNovant";
 
 class DoctorProvider extends React.Component {
-    state: DoctorProps = {
-        doctors: [], //store.doctors,
-        fetchDoctors: this.loadDoctors,
+    loadDoctors = async () => {
+        console.log("LOAD DOCS")
+        let result = await MyNovant.doctors();
+        console.log("GOT DOCS?", result)
+        this.setState({ doctors: result })
     }
 
-    async loadDoctors() {
-        console.log("LOAD DOCS")
-        let result = await fetch('something');
-        let doctors = await result.json();
-        console.log("GOT DOCS?", doctors)
-        // todo fetch :)
-        this.setState({ doctors })
+    state: DoctorProps = {
+        doctors: [],
+        fetchDoctors: this.loadDoctors,
     }
 
     render() {

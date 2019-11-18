@@ -1,5 +1,10 @@
 import {StyleSheet, Platform, StatusBar} from 'react-native';
 
+const palette = {
+    aubergine: '#512D6D',
+    fuschia: '#813ec1',
+};
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
@@ -28,3 +33,4 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
+export { palette };
