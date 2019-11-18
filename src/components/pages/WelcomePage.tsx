@@ -4,8 +4,10 @@ import styles from '../../Style';
 import { Container, Text, Footer, Header, Left, Button, Icon, Title, Body, Right, Content, FooterTab, Card, CardItem } from 'native-base';
 import * as WebBrowser from 'expo-web-browser'
 import AlbumList from '../molecules/AlbumList';
+import { NavProps } from '../../values/NavProps';
+import MyNovant from '../../system/MyNovant';
 
-export class Welcome extends React.Component {
+export class Welcome extends React.Component<NavProps> {
     openNovantHealthWebsite = () => {
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
     };
@@ -13,6 +15,11 @@ export class Welcome extends React.Component {
     launchExternalApp = () => {
         Linking.openURL("YouTube://1krc73eU5yU");
     };
+
+    handleLogout = () => {
+        MyNovant.logout();
+        this.props.navigation.navigate("Login");
+    }
 
     render() {
         return (<Container style={styles.container}>
@@ -61,8 +68,8 @@ export class Welcome extends React.Component {
                     <Button testID="GoToDoctorsList" onPress={() => this.props.navigation.navigate("DoctorsPage")}>
                         <Text>My Doctors!</Text>
                     </Button>
-                    <Button full>
-                        <Text>Remarkable!</Text>
+                    <Button testID="LogoutButton" onPress={this.handleLogout} full>
+                        <Text>Logout!</Text>
                     </Button>
                 </FooterTab>
             </Footer>

@@ -6,16 +6,16 @@ const environments: { [key: string]: NovantEnv } = {
         pass: 'P3ek@b0o',
     },
     cloud: {
-        // url: 'https://my-novant-api-thankful-squirrel.apps.pcfone.io',
         url: 'https://my-novant-api-active-lynx.apps.demo.azure.pcf-arau.pw',
-        user: 'patty',
-        pass: 'cakes',
+        user: 'mlugo@pivotal.io',
+        pass: 'P3ek@b0o',
     }
 }
 
 class MyNovantApi {
     private apiBase: string; 
     private loginUrl: string;
+    private logoutUrl: string;
     private doctorsUrl: string;
 
     private key: string;
@@ -23,6 +23,7 @@ class MyNovantApi {
     constructor(public environment: NovantEnv) {
         this.apiBase = this.environment.url;
         this.loginUrl = `${this.apiBase}/login`;
+        this.logoutUrl = `${this.apiBase}/bye`;
         this.doctorsUrl = `${this.apiBase}/doctors`;
     }
 
@@ -50,6 +51,22 @@ class MyNovantApi {
         return false;
     }
 
+    logout = async () => {
+        console.log("MyNovant#logout");
+        // we need to call the server at /bye with our jwt
+        let url = this.logoutUrl;
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${this.key}`, // :D
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+        })
+        console.log(`MyNovant#logout -- okay? ${response.ok}`)
+        return response.ok;
+    }
+
     doctors = async () => {
         let doctors = []
         console.log("MyNovant#doctors")
@@ -70,6 +87,7 @@ class MyNovantApi {
         return doctors;
     }
 }
+
 
 let MyNovant = new MyNovantApi(environments.local);
 export default MyNovant;

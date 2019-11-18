@@ -33,14 +33,14 @@ export default class LoginTemplate extends Component<Props, State> {
             <Container style={styles.container}>
                 <Header>
                     <Body>
-                        <Title testID="PageTitle">My Novant -- Login</Title>
+                        <Title testID="PageTitle">My Novant -- Login Here</Title>
                     </Body>
                 </Header>
                 <Content padder>
                     <Card>
                         <Body>
                             <Content padder>
-                                <Text>Please provide your username and password.</Text>
+                                <Text>Please provide your username and password below.</Text>
                             </Content>
                         </Body>
                     </Card>
