@@ -8,15 +8,23 @@ import * as Font from 'expo-font'
 import * as WebBrowser from 'expo-web-browser'
 import AlbumList from '../molecules/AlbumList';
 import { NavProps } from '../../values/NavProps';
+import MyNovant from '../../system/MyNovant';
 
 export class Welcome extends React.Component<NavProps> {
     openNovantHealthWebsite = () => {
         console.log("NH");
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
     };
+
     launchExternalApp = () => {
         Linking.openURL("YouTube://1krc73eU5yU");
     };
+
+    handleLogout = () => {
+        MyNovant.logout();
+        this.props.navigation.navigate("Login");
+    }
+
     render() {
         return (<Container style={styles.container}>
             <Header>
@@ -64,8 +72,8 @@ export class Welcome extends React.Component<NavProps> {
                     <Button testID="GoToDoctorsList" onPress={() => this.props.navigation.navigate("DoctorsPage")}>
                         <Text>My Doctors!</Text>
                     </Button>
-                    <Button full>
-                        <Text>Remarkable!</Text>
+                    <Button testID="Logout" onPress={this.handleLogout} full>
+                        <Text>Logout</Text>
                     </Button>
                 </FooterTab>
             </Footer>

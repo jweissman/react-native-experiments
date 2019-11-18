@@ -23,7 +23,6 @@ describe("LoginPage", () => {
     })
 
     describe("function", () => {
-        
         it('invokes navigation', () => {
             let loginButton = findByTestID("loginButton", wrapper);
             loginButton.first().props().onPress();
