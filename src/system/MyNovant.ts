@@ -27,7 +27,7 @@ class MyNovantContext {
     }
 }
 
-const env = environments.local;
+const env = environments.cloud;
 const ctx = new MyNovantContext(env);
 
 // const key;

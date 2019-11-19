@@ -1,13 +1,11 @@
 import React from "react";
 import store from "../Store";
 import DoctorContext, { DoctorProps } from "./DoctorContext";
-import MyNovant from "../system/MyNovant";
+import MyNovantApi from "../system/MyNovant";
 
 class DoctorProvider extends React.Component {
     loadDoctors = async () => {
-        console.log("LOAD DOCS")
-        let result = await MyNovant.doctors();
-        console.log("GOT DOCS?", result)
+        let result = await MyNovantApi.doctors();
         this.setState({ doctors: result })
     }
 

@@ -32,6 +32,10 @@ describe("LoginTemplate", () => {
             password: () => findByTestID("password", wrapper),
             loginButton: () => findByTestID("loginButton", wrapper),
         }
+
+        structure.username().first().props().onChangeText("")
+        structure.password().first().props().onChangeText("")
+        wrapper.update();
     })
 
     describe("structure", () => {
@@ -39,7 +43,7 @@ describe("LoginTemplate", () => {
             expect(structure.username().exists()).toBeTruthy();
             expect(structure.password().exists()).toBeTruthy();
         });
-        
+
         describe("login button", () => {
             it('exists', () => {
                 expect(structure.loginButton().exists()).toBeTruthy();
@@ -63,6 +67,7 @@ describe("LoginTemplate", () => {
     describe("function", () => {
         describe("onSubmit", () => {
             it("submits username/pass as obj to callback", () => {
+
                 structure.loginButton().first().props().onPress()
                 expect(onSubmitCallback).toHaveBeenCalledWith({
                     username: "",

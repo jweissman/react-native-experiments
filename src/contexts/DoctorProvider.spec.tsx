@@ -3,6 +3,9 @@ import { ReactWrapper, mount } from "enzyme";
 import DoctorProvider from './DoctorProvider';
 import { Doctor } from '../values/Doctor';
 
+import MyNovantApi from '../system/MyNovant';
+jest.mock('../system/MyNovant.ts');
+
 const renderComponent = () => {
     return mount(
         <DoctorProvider />
@@ -11,29 +14,13 @@ const renderComponent = () => {
 
 describe("DoctorProvider", () => {
     let wrapper: ReactWrapper;
-    // we call fetch at the expected place, and put the data into doctors for consumption
-    xit('loads doctors from the web service', async () => {
+    it('loads doctors from the web service', async () => {
         let expectedDoctors: Doctor[] = [{ id: -9999, name: 'John', practice: "Neurology" }]
-        let mockFetchPromise = Promise.resolve({
-            json: () => Promise.resolve(expectedDoctors) 
-        });
-
-        // @ts-ignore
-        global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
-
+        MyNovantApi.doctors = jest.fn().mockReturnValue(expectedDoctors)
         wrapper = renderComponent();
         let provider = wrapper.instance() as DoctorProvider;
         await provider.loadDoctors();
-
-        // @ts-ignore
-        expect(global.fetch).toHaveBeenCalled();
-
-        // setImmediate(() => {
+        expect(MyNovantApi.doctors).toHaveBeenCalled();
         expect(wrapper.update().state('doctors')).toEqual(expectedDoctors)
-
-        // @ts-ignore
-        global.fetch.mockClear();
-        // @ts-ignore
-        delete global.fetch;
     })
 })

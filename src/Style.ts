@@ -4,6 +4,7 @@ const palette = {
     aubergine: '#512D6D',   // grape
     fuschia: '#7c2bbb',     // blue-purple
     royalPurple: "#7841a5", // 'purply' 
+    bossanova: '#3D2252',   // grape II (part deux)
 };
 
 const styles = StyleSheet.create({
@@ -21,11 +22,9 @@ const styles = StyleSheet.create({
     },
     button: {
         justifyContent: "center",
-        backgroundColor: '#f2c113',
-        width: 200,
-        height: 50,
+        backgroundColor: palette.aubergine,
         borderRadius: 5,
-        margin: 10,
+        marginRight: -15,
     },
     buttonText: {
         fontSize: 25,

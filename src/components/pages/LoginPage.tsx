@@ -27,8 +27,6 @@ export default class LoginPage extends React.Component<NavProps> {
                         height: '100%',
                     }}
                 />
-                <Header>
-                </Header>
                 <Content contentContainerStyle={{ flex: 1 }} style={{ padding: 10 }}>
                     <LoginTemplate onSubmit={this.handleLogin} />
                 </Content>

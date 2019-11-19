@@ -11,8 +11,8 @@ type State = { username: string, password: string };
 
 export class LoginTemplate extends React.Component<Props, State> {
     state = {
-        username: "",
-        password: "",
+        username: env.user,
+        password: env.pass,
     };
 
     maySubmit = () => {
@@ -38,6 +38,7 @@ export class LoginTemplate extends React.Component<Props, State> {
                             testID="username"
                             onChangeText={(text) => this.setState({ username: text })}
                             value={this.state.username}
+                            style={{ color: 'white' }}
                         />
                     </FormItem>
                     <FormItem floatingLabel>
@@ -47,6 +48,7 @@ export class LoginTemplate extends React.Component<Props, State> {
                             secureTextEntry={true}
                             onChangeText={(text) => this.setState({ password: text })}
                             value={this.state.password}
+                            style={{ color: 'white' }}
                         />
                     </FormItem>
                 </Form>
