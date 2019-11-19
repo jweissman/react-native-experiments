@@ -1,14 +1,14 @@
 import React from "react";
 import {NavProps} from "../../values/NavProps";
-import {Button, Container, Content, Grid, Header, Row, Text, Form, Item as FormItem, Input, Label} from 'native-base';
+import { Container, Content, Header } from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
-import styles, { palette } from "../../Style";
+import { palette } from "../../Style";
 import { LoginTemplate } from "../templates/LoginTemplate";
-import MyNovant from "../../system/MyNovant";
+import MyNovantApi from "../../system/MyNovant";
 
 export default class LoginPage extends React.Component<NavProps> {
     handleLogin = async ({username, password}) => {
-        let openTheDoor = await MyNovant.authenticate({user: username, pass: password});
+        let openTheDoor = await MyNovantApi.authenticate({user: username, pass: password});
         if (openTheDoor) {
             this.props.navigation.navigate("Welcome")
         }

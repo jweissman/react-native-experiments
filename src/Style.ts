@@ -1,8 +1,9 @@
 import {StyleSheet, Platform, StatusBar} from 'react-native';
 
 const palette = {
-    aubergine: '#512D6D',
-    fuschia: '#813ec1',
+    aubergine: '#512D6D',   // grape
+    fuschia: '#7c2bbb',     // blue-purple
+    royalPurple: "#7841a5", // 'purply' 
 };
 
 const styles = StyleSheet.create({

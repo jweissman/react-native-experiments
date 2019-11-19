@@ -12,13 +12,12 @@ const environments: { [key: string]: NovantEnv } = {
     }
 }
 
-class MyNovantApi {
-    private apiBase: string; 
-    private loginUrl: string;
-    private logoutUrl: string;
-    private doctorsUrl: string;
-
-    private key: string;
+class MyNovantContext {
+    apiBase: string; 
+    loginUrl: string;
+    logoutUrl: string;
+    doctorsUrl: string;
+    key: string;
 
     constructor(public environment: NovantEnv) {
         this.apiBase = this.environment.url;
@@ -26,10 +25,20 @@ class MyNovantApi {
         this.logoutUrl = `${this.apiBase}/bye`;
         this.doctorsUrl = `${this.apiBase}/doctors`;
     }
+}
 
-    authenticate = async ({ user, pass }: { user: string, pass: string }) => {
+const env = environments.local;
+const ctx = new MyNovantContext(env);
+
+// const key;
+
+class MyNovantApi {
+    
+    // static shouldComeIn = () => false
+
+    static authenticate = async ({ user, pass }: { user: string, pass: string }) => {
         console.log("MyNovant#authenticate");
-        let url = `${this.loginUrl}?email=${user}&password=${pass}`;
+        let url = `${ctx.loginUrl}?email=${user}&password=${pass}`;
         console.log("MyNovant#authenticate", { url });
         let form = new FormData();
         form.append("email", user);
@@ -41,7 +50,7 @@ class MyNovantApi {
             let result = await response.json();
             console.log("MyNovant#authenticate result=", result);
             if (result['authenticated']) {
-                this.key = result['apiToken']
+                ctx.key = result['apiToken']
                 return true;
             } else {
                 alert("login failed, please try again")
@@ -51,14 +60,14 @@ class MyNovantApi {
         return false;
     }
 
-    logout = async () => {
+    static logout = async () => {
         console.log("MyNovant#logout");
         // we need to call the server at /bye with our jwt
-        let url = this.logoutUrl;
+        let url = ctx.logoutUrl;
         let response = await fetch(url, {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${this.key}`, // :D
+                'Authorization': `Bearer ${ctx.key}`, // :D
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -67,13 +76,13 @@ class MyNovantApi {
         return response.ok;
     }
 
-    doctors = async () => {
+    static doctors = async () => {
         let doctors = []
         console.log("MyNovant#doctors")
-        let result = await fetch(this.doctorsUrl, {
+        let result = await fetch(ctx.doctorsUrl, {
             credentials: 'omit',
             headers: {
-                'Authorization': `Bearer ${this.key}`,
+                'Authorization': `Bearer ${ctx.key}`,
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
@@ -88,5 +97,5 @@ class MyNovantApi {
     }
 }
 
-let MyNovant = new MyNovantApi(environments.local);
-export default MyNovant;
+export default MyNovantApi;
+export { env }; 

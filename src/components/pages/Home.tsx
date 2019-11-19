@@ -1,18 +1,14 @@
 import React from 'react';
 import { Linking } from 'react-native';
-import { AppLoading } from 'expo';
 import styles from '../../Style';
 import { Container, Text, Footer, Header, Left, Button, Icon, Title, Body, Right, Content, FooterTab, Card, CardItem } from 'native-base';
-import { Feather } from '@expo/vector-icons';
-import * as Font from 'expo-font'
 import * as WebBrowser from 'expo-web-browser'
 import AlbumList from '../molecules/AlbumList';
 import { NavProps } from '../../values/NavProps';
 import MyNovant from '../../system/MyNovant';
 
-export class Welcome extends React.Component<NavProps> {
+export class Home extends React.Component<NavProps> {
     openNovantHealthWebsite = () => {
-        console.log("NH");
         WebBrowser.openBrowserAsync("https://www.novanthealth.org");
     };
 
@@ -34,7 +30,7 @@ export class Welcome extends React.Component<NavProps> {
                     </Button>
                 </Left>
                 <Body>
-                    <Title testID="PageTitle">My Novant!</Title>
+                    <Title testID="PageTitle">Home</Title>
                 </Body>
                 <Right />
             </Header>

@@ -1,18 +1,24 @@
 import React from 'react';
 import { Text, Form, Item as FormItem, Label, Input, Button, Row, Grid } from 'native-base';
 import styles, { palette } from '../../Style';
-import MyNovant from '../../system/MyNovant';
+import { env } from '../../system/MyNovant';
 
 type Props = {
     onSubmit: ({ username, password }: { username: string, password: string }) => void
 }
 
 type State = { username: string, password: string };
+
 export class LoginTemplate extends React.Component<Props, State> {
     state = {
-        username: MyNovant.environment.user,
-        password: MyNovant.environment.pass,
+        username: "",
+        password: "",
     };
+
+    maySubmit = () => {
+        let loginEnabled = !!this.state.username && !!this.state.password
+        return loginEnabled
+    }
 
     handleSubmit = () => {
         this.props.onSubmit({
@@ -45,11 +51,7 @@ export class LoginTemplate extends React.Component<Props, State> {
                     </FormItem>
                 </Form>
             </Row>
-            <Row>
-                <Text style={{ ...styles.bodyText, color: 'white', fontSize: 18 }}>
-                    Create Account
-                </Text>
-            </Row>
+
             <Row>
                 <Button
                     testID="loginButton"
@@ -57,20 +59,32 @@ export class LoginTemplate extends React.Component<Props, State> {
                         height: 50,
                         borderRadius: 35,
                         padding: 50,
-                        backgroundColor: palette.fuschia,
+                        backgroundColor: this.maySubmit()
+                          ? 'white'
+                          : palette.royalPurple
                     }}
                     onPress={this.handleSubmit}
+                    disabled={!this.maySubmit()}
                 >
                     <Text style={{
-                        color: 'white',
+                        color: this.maySubmit() ? 'black' : 'rgba(255,255,255,0.5)',
                         ...styles.bodyText,
-                        fontSize: 22,
-                    }}>Log In</Text>
+                        fontSize: 16,
+                        fontFamily: 'Whitney_bold',
+                    }}>Login</Text>
                 </Button>
             </Row>
+            <Row>
+                <Text style={{ ...styles.bodyText, color: 'white', fontSize: 18 }}>
+                    Forgot your Password?
+                </Text>
+            </Row>
             <Row><Text style={{ color: 'white' }}>GAP</Text></Row>
-            <Row><Text style={{ color: 'white' }}>PROVIDER_BUTTON</Text></Row>
-            <Row><Text style={{ color: 'white' }}>LOCATION_BUTTON</Text></Row>
+            <Row>
+                <Text style={{ ...styles.bodyText, color: 'white', fontSize: 18 }}>
+                    Create Account
+                </Text>
+            </Row>
         </Grid>;
     }
 }
