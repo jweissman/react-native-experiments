@@ -5,6 +5,7 @@ import styles, { palette } from "../../Style";
 import MyNovantApi from "../../system/MyNovant";
 import { NavProps } from "../../values/NavProps";
 import BottomNav from "../compounds/BottomNav";
+import NovantHealthLogo from '../../assets/novanthealthlogo'
 
 type Props = {
     pageTitle: string
@@ -33,14 +34,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                     </Button>
                 </Left>
                 <Body style={{ flex: 1 }}>
-                    <Image
-                        testID="logo"
-                        style={{
-                            width: 141,
-                            height: 26
-                        }}
-                        source={require('../../../assets/nh.jpg')}
-                    />
+                    <NovantHealthLogo />
                 </Body>
                 <Right style={{ flex: 1 }}>
                     <Button
