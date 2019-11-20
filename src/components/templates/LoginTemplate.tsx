@@ -30,7 +30,7 @@ export class LoginTemplate extends React.Component<Props, State> {
 
     render() {
         return <View style={{ alignItems: 'center', ...styles.bodyText, paddingTop: 90, paddingLeft: 30, paddingRight: 30 }}>
-            <View style={{width: 166, height: 40, marginBottom: 50}}>
+            <View style={{width: 166, height: 34, marginBottom: 50}}>
                 <NovantHealthLogo />
             </View>
                 <Form style={{ width: '100%', marginBottom: 40 }}>

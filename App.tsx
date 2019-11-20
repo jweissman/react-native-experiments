@@ -34,6 +34,7 @@ class App extends Component<{}, { isReady: boolean }> {
             Roboto_medium: require('./node_modules/native-base/Fonts/Roboto_medium.ttf'),
             Whitney_book: require('./assets/Whitney-Book.otf'),
             Whitney_bold: require('./assets/Whitney-Bold.otf'),
+            Whitney_semi: require('./assets/Whitney-Semibld.otf'),
             ...Feather.font,
         });
         this.setState({ isReady: true });

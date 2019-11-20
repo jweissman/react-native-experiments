@@ -27,10 +27,14 @@ class NavTemplate extends React.Component<Props & NavProps> {
 
     render() {
         return <Container style={styles.container}>
-            <Header style={{ backgroundColor: palette.aubergine }}>
+            <Header style={{
+                backgroundColor: palette.aubergine,
+                padding: 16,
+                paddingTop: 24,
+                }}>
                 <Left style={{ flex: 1 }}>
                     <Button transparent>
-                        <Icon name='menu' style={{ color: 'white' }} />
+                        <Icon name='menu' style={{ marginLeft: 10, color: 'white' }} />
                     </Button>
                 </Left>
                 <Body style={{ flex: 1 }}>
@@ -40,7 +44,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                     <Button
                         testID="Logout"
                         onPress={this.handleLogout}
-                        style={{ ...styles.button }}
+                        style={{ ...styles.button, marginRight: -12 }}
                     >
                         <Text>Logout</Text>
                     </Button>
@@ -63,7 +67,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                 </Title>
             </View>
 
-            <Content padder>
+            <Content style={{backgroundColor: palette.wildsand, padding: 16}}>
                 {this.props.children}
             </Content>
 

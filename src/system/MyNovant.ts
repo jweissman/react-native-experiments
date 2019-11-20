@@ -17,25 +17,22 @@ class MyNovantContext {
     loginUrl: string;
     logoutUrl: string;
     doctorsUrl: string;
+    appointmentsUrl: string;
     key: string;
 
     constructor(public environment: NovantEnv) {
         this.apiBase = this.environment.url;
         this.loginUrl = `${this.apiBase}/login`;
         this.logoutUrl = `${this.apiBase}/bye`;
-        this.doctorsUrl = `${this.apiBase}/doctors`;
+        this.doctorsUrl = `${this.apiBase}/api/providers`;
+        this.appointmentsUrl = `${this.apiBase}/api/appointments`;
     }
 }
 
-const env = environments.cloud;
+const env = environments.local;
 const ctx = new MyNovantContext(env);
 
-// const key;
-
 class MyNovantApi {
-    
-    // static shouldComeIn = () => false
-
     static authenticate = async ({ user, pass }: { user: string, pass: string }) => {
         console.log("MyNovant#authenticate");
         let url = `${ctx.loginUrl}?email=${user}&password=${pass}`;
@@ -77,9 +74,17 @@ class MyNovantApi {
     }
 
     static doctors = async () => {
-        let doctors = []
         console.log("MyNovant#doctors")
-        let result = await fetch(ctx.doctorsUrl, {
+        return MyNovantApi.httpGet(ctx.doctorsUrl)
+    }
+
+    static appointments = async() => {
+        console.log("MyNovant#appointments")
+        return MyNovantApi.httpGet(ctx.appointmentsUrl)
+    }
+
+    static httpGet = async (url: string) => {
+        let result = await fetch(url, {
             credentials: 'omit',
             headers: {
                 'Authorization': `Bearer ${ctx.key}`,
@@ -87,13 +92,11 @@ class MyNovantApi {
                 'Content-Type': 'application/json'
             },
         });
-        console.log("MyNovant#doctors status=", result.status)
         if (result.ok) {
-            console.log("MyNovant#doctors result=", result)
-            doctors = await result.json();
-            console.log("MyNovant#doctors doctors=", doctors)
+            return await result.json()
+        } else {
+            throw new Error(`Request to get ${url} failed`)
         }
-        return doctors;
     }
 }
 

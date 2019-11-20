@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Expo Detox Typescript Example",
-    "slug": "expo-detox-typescript-example",
+    "name": "My Novant",
+    "slug": "my-novant",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [
