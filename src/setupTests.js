@@ -25,8 +25,9 @@ global.navigator = {
 };
 copyProps(window, global);
 
-// react doesn't like some of the props that are set on native components (that eventually are set on DOM nodes, so suppress those warnings
-const suppressedErrors = /(Received `%s` for a non-boolean attr|Use PascalCase for React components|React does not recognize the.*prop on a DOM element|Unknown event handler property|is using uppercase HTML|Received `true` for a non-boolean attribute `accessible`|The tag.*is unrecognized in this browser)/
+// react doesn't like some of the props that are set on native components
+// (that eventually are set on DOM nodes, so suppress those warnings)
+const suppressedErrors = /(Invalid value for prop %s on <%s> tag|Received `%s` for a non-boolean attr|Use PascalCase for React components|React does not recognize the.*prop on a DOM element|Unknown event handler property|is using uppercase HTML|Received `true` for a non-boolean attribute `accessible`|The tag.*is unrecognized in this browser)/
 // eslint-disable-next-line no-console
 const realConsoleError = console.error
 // eslint-disable-next-line no-console
@@ -42,3 +43,7 @@ console.error = message => {
  * and inspect the DOM in tests.
  */
 Enzyme.configure({ adapter: new Adapter() });
+
+// fake time
+// see https://github.com/facebook/jest/issues/4359
+jest.useFakeTimers()

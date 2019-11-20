@@ -5,19 +5,19 @@ import { NavigationStackProp } from 'react-navigation-stack';
 import { Doctor } from './src/values/Doctor';
 import MyDoctorDetailsPage from './src/components/pages/MyDoctorDetailsPage';
 import MyDoctorsPage from './src/components/pages/MyDoctorsPage';
-import { Welcome } from './src/components/pages/Welcome';
+import { Home } from './src/components/pages/Home';
 import { Container } from "native-base";
 import { Feather } from '@expo/vector-icons';
 import * as Font from 'expo-font'
 
 import DoctorProvider from './src/contexts/DoctorProvider';
-import {LoginPage} from "./src/components/pages/LoginPage";
 import {AppLoading} from "expo";
+import LoginPage from './src/components/pages/LoginPage';
 
 const AppNavigation = createSwitchNavigator(
     {
         Login: { screen: LoginPage },
-        Welcome: { screen: Welcome },
+        Welcome: { screen: Home },
         DoctorsPage: { screen: MyDoctorsPage },
         DoctorDetailView: { screen: MyDoctorDetailsPage }
     },
@@ -33,6 +33,7 @@ class App extends Component<{}, { isReady: boolean }> {
             Roboto: require('./node_modules/native-base/Fonts/Roboto.ttf'),
             Roboto_medium: require('./node_modules/native-base/Fonts/Roboto_medium.ttf'),
             Whitney_book: require('./assets/Whitney-Book.otf'),
+            Whitney_bold: require('./assets/Whitney-Bold.otf'),
             ...Feather.font,
         });
         this.setState({ isReady: true });
