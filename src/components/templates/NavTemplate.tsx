@@ -27,25 +27,29 @@ class NavTemplate extends React.Component<Props & NavProps> {
     render() {
         return <Container style={styles.container}>
             <Header style={{ backgroundColor: palette.aubergine }}>
-                <Left>
+                <Left style={{ flex: 1 }}>
                     <Button transparent>
                         <Icon name='menu' style={{ color: 'white' }} />
                     </Button>
                 </Left>
-                <Body>
+                <Body style={{
+                    flex: 1
+                    }}>
                     <Image
                         testID="logo"
-                        style={{ width: 141, height: 26 }}
+                        style={{
+                            width: 141,
+                            height: 26
+                        }}
                         source={require('../../../assets/nh.jpg')}
                     />
                 </Body>
-                <Right>
+                <Right style={{ flex: 1 }}>
                     <Button
                         testID="Logout"
                         onPress={this.handleLogout}
                         style={{ ...styles.button }}
                     >
-                        {/* <Icon name="log-out" /> */}
                         <Text>Logout</Text>
                     </Button>
                 </Right>
