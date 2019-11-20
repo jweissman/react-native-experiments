@@ -10,24 +10,32 @@
     "e2e": "detox test --configuration ios.sim",
     "dl_expo_bins": "./scripts/dl_expo_bins_ios",
     "postinstall": "patch-package",
-    "verify": "yarn test && yarn e2e"
+    "verify": "yarn test && yarn e2e",
+    "svgr": "svgr --native -d src/icons src/assets"
   },
   "dependencies": {
+    "@svgr/cli": "^4.3.3",
+    "@svgr/core": "^4.3.3",
     "expo": "^33.0.0",
     "expo-font": "~5.0.1",
     "expo-linear-gradient": "~5.0.1",
     "expo-web-browser": "~5.0.2",
     "native-base": "^2.13.8",
+    "path-dirname": "^1.0.2",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-linear-gradient": "^2.5.6",
+    "react-native-svg": "^9.13.3",
+    "react-native-svg-transformer": "^0.14.1",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^1.10.2",
-    "react-navigation-tabs": "^2.5.6"
+    "react-navigation-tabs": "^2.5.6",
+    "semver": "^6.3.0"
   },
   "devDependencies": {
+    "@svgr/plugin-svgo": "^4.3.1",
     "@types/detox": "^12.8.2",
     "@types/enzyme": "^3.10.3",
     "@types/jasmine": "^3.3.13",
@@ -63,6 +71,9 @@
     "setupFilesAfterEnv": [
       "<rootDir>src/setupTests.js"
     ],
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "moduleNameMapper": {
+      "\\.svg": "<rootDir>/svgmock.js"
+    }
   }
 }

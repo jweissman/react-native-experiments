@@ -1,8 +1,19 @@
 import React from "react";
 import {NavProps} from "../../values/NavProps";
-import {Button, Container, Content, Grid, Header, Row, Text, Form, Item as FormItem, Input, Label} from 'native-base';
+import {
+    Button,
+    Container,
+    Content,
+    Text,
+    Form,
+    Item as FormItem,
+    Input,
+    Label,
+    View
+} from 'native-base';
 import { LinearGradient } from 'expo-linear-gradient';
 import styles from "../../Style";
+import NovantHealthLogo from "../../assets/novanthealthlogo";
 
 const palette = {
     aubergine: '#512D6D',
@@ -27,13 +38,12 @@ export class LoginPage extends React.Component<NavProps, State> {
                             height: '100%',
                         }}
                     />
-                    <Header>
-                    </Header>
-                    <Content contentContainerStyle={{flex: 1}} style={{padding: 10}}>
-                        <Grid style={{alignItems: 'center', ...styles.bodyText}}>
-                            <Row><Text style={{color: 'white', ...styles.bodyText}}>LOGO</Text></Row>
-                            <Row style={{height: '20%'}}>
-                                <Form style={{ width: '100%'}}>
+                    <Content contentContainerStyle={{flex: 1}} style={{padding: 10, paddingTop: 80}}>
+                        <View style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 50, paddingLeft: 50, paddingRight: 50, ...styles.bodyText}}>
+                                <View style={{width: 169, height: 40, marginBottom: 20}}>
+                                    <NovantHealthLogo/>
+                                </View>
+                                <Form style={{ width: '100%', marginBottom: 50}}>
                                     <FormItem floatingLabel>
                                         <Label style={{color: 'white'}}>Username</Label>
                                         <Input
@@ -50,15 +60,7 @@ export class LoginPage extends React.Component<NavProps, State> {
                                         />
                                     </FormItem>
                                 </Form>
-                            </Row>
-                            <Row>
-                                <Text style={{...styles.bodyText, color: 'white', fontSize: 18}}>
-                                    Create Account
-                                </Text>
-                            </Row>
-                            <Row>
                                 <Button style={{
-                                    // marginTop: 20,
                                     height: 50,
                                     borderRadius: 35,
                                     padding: 50,
@@ -70,11 +72,7 @@ export class LoginPage extends React.Component<NavProps, State> {
                                         fontSize: 22,
                                     }}>Log In</Text>
                                 </Button>
-                            </Row>
-                            <Row><Text style={{color: 'white'}}>GAP</Text></Row>
-                            <Row><Text style={{color: 'white'}}>PROVIDER_BUTTON</Text></Row>
-                            <Row><Text style={{color: 'white'}}>LOCATION_BUTTON</Text></Row>
-                        </Grid>
+                        </View>
                     </Content>
                 </Container>
         )
