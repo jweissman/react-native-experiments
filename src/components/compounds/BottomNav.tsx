@@ -9,7 +9,7 @@ type NavItem = {
     active: boolean
 }
 
-type BottomNavProps = { items: NavItem[] } //{ [key: string]: NavItem }}
+type BottomNavProps = { items: NavItem[] }
 
 class BottomNav extends React.Component<BottomNavProps> {
     render() {
