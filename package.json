@@ -10,7 +10,7 @@
     "e2e": "detox test --configuration ios.sim",
     "dl_expo_bins": "./scripts/dl_expo_bins_ios",
     "postinstall": "patch-package",
-    "verify": "yarn test && yarn e2e",
+    "verify": "yarn dl_expo_bins && yarn test && yarn e2e",
     "svgr": "svgr --native -d src/icons src/assets"
   },
   "dependencies": {

@@ -29,28 +29,28 @@ export class LoginTemplate extends React.Component<Props, State> {
     }
 
     render() {
-        return <View style={{ alignItems: 'center', ...styles.bodyText, paddingTop: 120, paddingLeft: 20, paddingRight: 20 }}>
-            <View style={{width: 166, height: 40, marginBottom: 65}}>
+        return <View style={{ alignItems: 'center', ...styles.bodyText, paddingTop: 90, paddingLeft: 30, paddingRight: 30 }}>
+            <View style={{width: 166, height: 40, marginBottom: 50}}>
                 <NovantHealthLogo />
             </View>
                 <Form style={{ width: '100%', marginBottom: 40 }}>
-                    <FormItem floatingLabel style={{marginLeft: 0, marginBottom: 20}}>
-                        <Label style={{ color: 'rgba(255, 255, 255, 0.5)', marginBottom: 40 }}>Username</Label>
+                    <FormItem floatingLabel style={{marginLeft: 0, marginBottom: 10}}>
+                        <Label style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Username</Label>
                         <Input
                             testID="username"
                             onChangeText={(text) => this.setState({ username: text })}
                             value={this.state.username}
-                            style={{ color: 'white', marginLeft: 0 }}
+                            style={{ color: 'white', marginLeft: 0, marginTop: 5 }}
                         />
                     </FormItem>
                     <FormItem floatingLabel style={{marginLeft: 0}}>
-                        <Label style={{ color: 'white' }}>Password</Label>
+                        <Label style={{ color: 'rgba(255, 255, 255, 0.5)' }}>Password</Label>
                         <Input
                             testID="password"
                             secureTextEntry={true}
                             onChangeText={(text) => this.setState({ password: text })}
                             value={this.state.password}
-                            style={{ color: 'white' }}
+                            style={{ color: 'white', marginLeft: 0, marginTop: 5  }}
                         />
                     </FormItem>
                 </Form>
@@ -60,7 +60,9 @@ export class LoginTemplate extends React.Component<Props, State> {
                     style={{
                         height: 50,
                         borderRadius: 35,
+                        width: '100%',
                         padding: 50,
+                        justifyContent: 'center',
                         backgroundColor: this.maySubmit()
                           ? 'white'
                           : palette.royalPurple
