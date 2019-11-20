@@ -32,9 +32,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                         <Icon name='menu' style={{ color: 'white' }} />
                     </Button>
                 </Left>
-                <Body style={{
-                    flex: 1
-                    }}>
+                <Body style={{ flex: 1 }}>
                     <Image
                         testID="logo"
                         style={{

@@ -1,11 +1,9 @@
 import React from 'react';
 import { Linking } from 'react-native';
-import styles from '../../Style';
-import { Container, Text, Footer, Header, Left, Button, Icon, Title, Body, Right, Content, FooterTab, Card, CardItem } from 'native-base';
+import { palette } from '../../Style';
+import { Text, Left, Icon, Body, Content, Card, CardItem, View, Grid, Row, Col } from 'native-base';
 import * as WebBrowser from 'expo-web-browser'
-import AlbumList from '../molecules/AlbumList';
 import { NavProps } from '../../values/NavProps';
-import MyNovant from '../../system/MyNovant';
 import NavTemplate from '../templates/NavTemplate';
 
 export class Home extends React.Component<NavProps> {
@@ -20,40 +18,91 @@ export class Home extends React.Component<NavProps> {
     render() {
         return (<NavTemplate
             pageTitle="Home"
-            navItems={{
-                providers: {
-                    goTo: "DoctorsPage",
-                    iconName: "briefcase",
-                    label: "My Providers",
-                }
-            }}
             navigation={this.props.navigation}
         >
-            <Text style={{ fontSize: 32, fontFamily: 'Whitney_book' }}>
-                Welcome to MyNovant!
+            <Text style={{ fontSize: 18, fontFamily: 'Whitney_book' }}>
+                Upcoming Appointments
+            </Text>
+            <Card>
+                <CardItem>
+                    <Left style={{
+                        flex: 1.2,
+                        }}>
+                        <Content style={{
+                            backgroundColor: palette.wildsand,
+                            borderRadius: 10,
+                            margin: 5,
+                        }}>
+                            <View padder style={{
+                                alignItems: 'center',
+                                display: 'flex'
+                            }}>
+                                <Text>THURS</Text>
+                                <Text style={{ flex: 1, fontWeight: 'bold' }}>
+                                    Nov 31
+                                </Text>
+                                <Text style={{flex: 1}}>8:00 AM</Text>
+                            </View>
+                        </Content>
+                    </Left>
+                    <Body style={{ flex: 3, padding: 10 }}>
+                        <Text style={{ fontSize: 14, fontWeight: 'bold' }}>
+                            Knee Consultation
+                        </Text>
+                        <Grid>
+                            <Col style={{ flex: 1 }}>
+                                <Row>
+                                    <Icon name='map' />
+                                </Row>
+                                <Row>
+                                    <Icon name='briefcase' />
+                                </Row>
+                            </Col>
+                            <Col style={{flex: 5}}>
+                                <Row>
+                                    <Text style={{ color: 'black', fontSize: 14, fontWeight: '300' }}>
+                                        Novant Health Charlotte Orthopedic Hospital
+                                    </Text>
+                                </Row>
+                                <Row>
+                                    <Text style={{ fontSize: 14, fontWeight: '300' }}>
+                                        Snow Brenner Daws
+                                    </Text>
+                                </Row>
+                            </Col>
+                        </Grid>
+                        {/* <Text style={{fontSize: 14, fontWeight: '300'}}>
+                            Novant Health Charlotte Orthopedic Hospital
+                        </Text> */}
+                        {/* <Text style={{ fontSize: 14, fontWeight: '300' }}>
+                            <Icon name='briefcase' />
+                            Snow Brenner Daws
+                        </Text> */}
+                    </Body>
+                </CardItem>
+            </Card>
+
+            {/* <Text style={{ fontSize: 32, fontFamily: 'Whitney_book' }}>
+                New Messages
             </Text>
             <Card>
                 <CardItem>
                     <Body>
                         <Text>
-                            How are you feeling today?
+                            Hi Emma, I've changed your prescription...
                         </Text>
                     </Body>
                 </CardItem>
             </Card>
+
+            <Text style={{ fontSize: 32, fontFamily: 'Whitney_book' }}>
+                Wellness Reminder
+            </Text>
             <Content padder>
-                <Text style={{ fontSize: 24 }}>Actions</Text>
                 <Body>
-                    <Button large iconLeft light onPress={this.openNovantHealthWebsite}>
-                        <Icon name="heart"></Icon>
-                        <Text>Novant Health site</Text>
-                    </Button>
-                    <Button large iconLeft light onPress={this.launchExternalApp}>
-                        <Icon name="activity" type='Feather'></Icon>
-                        <Text>Launch video visit</Text>
-                    </Button>
+                    <Text>Wash your hands</Text>
                 </Body>
-            </Content>
+            </Content> */}
         </NavTemplate>);
     }
 }

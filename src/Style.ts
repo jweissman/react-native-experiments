@@ -5,6 +5,7 @@ const palette = {
     fuschia: '#7c2bbb',     // blue-purple
     royalPurple: "#7841a5", // 'purply' 
     bossanova: '#3D2252',   // grape II (part deux)
+    wildsand: '#f4f4f4',
 };
 
 const styles = StyleSheet.create({
