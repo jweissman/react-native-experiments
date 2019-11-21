@@ -60,5 +60,10 @@ describe('Patty Patient', () => {
         await expect(element(by.id("PageTitle"))).toHaveLabel("My Appointments");
     })
 
-    test.todo("navigates to her messages")
+    it("navigates to her messages", async () => {
+        await expect(element(by.id("PageTitle"))).toHaveLabel("Home");
+        await expect(element(by.id("MyMessagesNavButton"))).toExist();
+        await element(by.id("MyMessagesNavButton")).tap();
+        await expect(element(by.id("PageTitle"))).toHaveLabel("My Messages");
+    })
 });

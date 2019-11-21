@@ -106,7 +106,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                     },
                     {
                         label: "Messages",
-                        testID: "MessageNavButton",
+                        testID: "MyMessagesNavButton",
                         onPress: this.visitMessages,
                         active: this.props.pageTitle === "My Messages",
                         iconName: "send",
