@@ -36,10 +36,11 @@ class MyMessagesPage extends React.Component<NavProps, State> {
             pageTitle="My Messages"
             navigation={this.props.navigation}
         >
-            <Item rounded>
+            <Item rounded style={{ backgroundColor: 'white', marginBottom: 12 }}>
                 <Input
                     placeholder='Search'
                     value={this.state.search}
+                    style={{marginLeft: 10}}
                     onChangeText={(text) => this.setState({ search: text })}
                 />
                 <Icon name="search" />

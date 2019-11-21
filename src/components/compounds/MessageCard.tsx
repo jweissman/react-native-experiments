@@ -9,7 +9,7 @@ export default class MessageCard extends React.Component<Message> {
     render() {
         let message = this.props;
         return <Card style={{borderRadius: 12}}>
-                <CardItem style={{borderRadius: 12, height: 90}}>
+                <CardItem style={{borderRadius: 12, height: 96}}>
                     <Left style={{flex: 1, height: '100%', justifyContent: 'center'}}>
                         <View style={{ flexDirection: 'row', alignItems: 'center'}}>
                             <Image
@@ -27,7 +27,7 @@ export default class MessageCard extends React.Component<Message> {
                             }}>
                             <Text
                                 style={{
-                                    fontSize: 16,
+                                    fontSize: 18,
                                     fontFamily: "Whitney_semi"
                                 }}
                             >
@@ -35,21 +35,27 @@ export default class MessageCard extends React.Component<Message> {
                             </Text>
                             <View style={{
                                 flexDirection: 'row',
-                                height: 16,
+                                height: 24,
                                 alignItems: 'center',
+                                // borderWidth: 1,
+                                // borderColor: 'blue'
                             }}>
                                 <Text
                                     style={{
                                         color: palette.warmGrey,
-                                        fontSize: 14,
+                                        fontSize: 15,
                                         marginRight: 6,
+                                        // borderWidth: 1,
+                                        // borderColor: 'red'
                                     }}
                                 >{moment(message.dateTimeSent).format("h:mm")}</Text>
                                 <Icon
                                     name="arrow-forward"
                                     style={{
-                                        color: palette.coolGrey,
-                                        fontSize: 16,
+                                        color: palette.aluminium,
+                                        fontSize: 24,
+                                        // borderWidth: 1,
+                                        // borderColor: 'green'
                                     }}
                                 />
                             </View>
@@ -57,7 +63,7 @@ export default class MessageCard extends React.Component<Message> {
 
                         <Text
                             style={{
-                                fontSize: 16,
+                                fontSize: 18,
                                 fontFamily: "Whitney_book"
                             }}
                         >
@@ -66,7 +72,7 @@ export default class MessageCard extends React.Component<Message> {
 
                         <Text
                             style={{
-                                fontSize: 14,
+                                fontSize: 16,
                                 fontFamily: "Whitney_book",
                                 color: 'gray'
                             }}

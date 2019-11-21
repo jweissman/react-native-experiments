@@ -87,7 +87,7 @@ export class AppointmentCard extends React.Component<Appointment> {
                 </Body>
                 <Right style={{flex: 0.2}}>
                     <Icon
-                        style={{ color: palette.coolGrey }}
+                        style={{ color: palette.aluminium, fontSize: 24 }}
                         name='arrow-forward'
                     />
                 </Right>
