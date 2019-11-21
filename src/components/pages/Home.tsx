@@ -8,14 +8,22 @@ import MyNovantApi from '../../system/MyNovant';
 import { Appointment } from '../../values/Appointment';
 import { AppointmentCard } from '../compounds/AppointmentCard';
 import { palette } from '../../Style';
+import MessageCard from '../compounds/MessageCard';
 
-export class Home extends React.Component<NavProps, { appointments: Appointment[], ready: boolean }> {
-    state = { appointments: [], ready: false }
+type State = {
+    appointments: Appointment[],
+    messages: Message[],
+    ready: boolean
+}
+
+export class Home extends React.Component<NavProps, State> {
+    state = { appointments: [], messages: [], ready: false }
 
     componentDidMount = async () => {
         let appointments = await MyNovantApi.appointments();
-        console.log("!!! APPTS ---> ", appointments);
-        this.setState({ appointments, ready: true });
+        let messages = await MyNovantApi.messages();
+        console.log("---> GOT MESSAGES", { messages })
+        this.setState({ appointments, messages, ready: true });
     }
 
     openNovantHealthWebsite = () => {
@@ -27,7 +35,7 @@ export class Home extends React.Component<NavProps, { appointments: Appointment[
     };
 
     render() {
-        let { ready, appointments } = this.state;
+        let { ready, appointments, messages } = this.state;
         return (<NavTemplate
             pageTitle="Home"
             navigation={this.props.navigation}
@@ -50,80 +58,7 @@ export class Home extends React.Component<NavProps, { appointments: Appointment[
             }}>
                 New Messages
             </Text>
-            <Card style={{borderRadius: 12}}>
-                <CardItem style={{borderRadius: 12, height: 90}}>
-                    <Left style={{flex: 1, height: '100%', justifyContent: 'center'}}>
-                        <View style={{ flexDirection: 'row', alignItems: 'center'}}>
-                            <Image
-                                style={{ width: 32, height: 32, borderRadius: 16, marginRight: 12 }}
-                                source={{ uri: "https://source.unsplash.com/random?person" }} />
-                        </View>
-                    </Left>
-                    <Body style={{ flex: 6, justifyContent: "space-between" }}>
-                        <View 
-                            style={{
-                                display: 'flex',
-                                flexDirection: 'row',
-                                width: '100%',
-                                justifyContent: 'space-between',
-                            }}>
-                            <Text
-                                style={{
-                                    // flex: 10,
-                                    fontSize: 16,
-                                    fontFamily: "Whitney_semi"
-                                }}
-                            >
-                                Dr. Sherry Yanez
-                            </Text>
-                            <View style={{
-                                flexDirection: 'row',
-                                height: 16,
-                                alignItems: 'center',
-                            }}>
-                                <Text
-                                    style={{
-                                        color: palette.warmGrey,
-                                        fontSize: 14,
-                                        marginRight: 6,
-                                    }}
-                                >The Time</Text>
-                                <Icon
-                                    name="arrow-forward"
-                                    style={{
-                                        color: palette.coolGrey,
-                                        fontSize: 16,
-                                    }}
-                                />
-                            </View>
-                        </View>
-
-                        <Text
-                            style={{
-                                fontSize: 16,
-                                fontFamily: "Whitney_book"
-                            }}
-                        >
-                            Come in for a check up please
-                        </Text>
-
-                        <Text
-                            style={{
-                                fontSize: 14,
-                                fontFamily: "Whitney_book",
-                                color: 'gray'
-                            }}
-                            numberOfLines={1}
-                        >
-                            We'd like to see you next Wednesday
-                            for a check-up regarding the issues
-                            that were uncovered during your last visit
-                            to the clinic
-                        </Text>
-                    </Body>
-                </CardItem>
-            </Card>
-
+            {ready && <MessageCard {...messages[0]} />}
         </NavTemplate>);
     }
 }

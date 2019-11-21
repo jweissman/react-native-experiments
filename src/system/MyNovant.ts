@@ -18,6 +18,7 @@ class MyNovantContext {
     logoutUrl: string;
     doctorsUrl: string;
     appointmentsUrl: string;
+    messagesUrl: string;
     key: string;
 
     constructor(public environment: NovantEnv) {
@@ -26,6 +27,7 @@ class MyNovantContext {
         this.logoutUrl = `${this.apiBase}/bye`;
         this.doctorsUrl = `${this.apiBase}/api/providers`;
         this.appointmentsUrl = `${this.apiBase}/api/appointments`;
+        this.messagesUrl = `${this.apiBase}/api/messages`;
     }
 }
 
@@ -81,6 +83,11 @@ class MyNovantApi {
     static appointments = async() => {
         console.log("MyNovant#appointments")
         return MyNovantApi.httpGet(ctx.appointmentsUrl)
+    }
+
+    static messages = async() => {
+        console.log("MyNovant#messages")
+        return MyNovantApi.httpGet(ctx.messagesUrl)
     }
 
     static httpGet = async (url: string) => {
