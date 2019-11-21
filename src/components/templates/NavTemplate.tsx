@@ -16,6 +16,10 @@ class NavTemplate extends React.Component<Props & NavProps> {
         this.props.navigation.navigate("DoctorsPage");
     }
 
+    visitAppointments = () => {
+        this.props.navigation.navigate("AppointmentsPage");
+    }
+
     goHome = () => {
         this.props.navigation.navigate("Welcome")
     }
@@ -74,11 +78,18 @@ class NavTemplate extends React.Component<Props & NavProps> {
             <BottomNav
                 items={[
                     {
-                        label: "My Doctors",
+                        label: "Doctors",
                         testID: "MyDoctorsNavButton",
                         onPress: this.visitProviders,
                         active: this.props.pageTitle === "My Providers",
                         iconName: "briefcase",
+                    },
+                    {
+                        label: "Appointments",
+                        testID: "MyAppointmentsNavButton",
+                        onPress: this.visitAppointments,
+                        active: this.props.pageTitle === "My Appointments",
+                        iconName: "calendar",
                     },
                     {
                         label: "Home",

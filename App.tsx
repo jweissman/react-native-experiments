@@ -13,13 +13,15 @@ import * as Font from 'expo-font'
 import DoctorProvider from './src/contexts/DoctorProvider';
 import {AppLoading} from "expo";
 import LoginPage from './src/components/pages/LoginPage';
+import MyAppointmentsPage from './src/components/pages/MyAppointmentsPage';
 
 const AppNavigation = createSwitchNavigator(
     {
         Login: { screen: LoginPage },
         Welcome: { screen: Home },
         DoctorsPage: { screen: MyDoctorsPage },
-        DoctorDetailView: { screen: MyDoctorDetailsPage }
+        AppointmentsPage: { screen: MyAppointmentsPage },
+        DoctorDetailView: { screen: MyDoctorDetailsPage },
     },
 );
 
