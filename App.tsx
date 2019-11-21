@@ -11,6 +11,7 @@ import DoctorProvider from './src/contexts/DoctorProvider';
 import {AppLoading} from "expo";
 import LoginPage from './src/components/pages/LoginPage';
 import MyAppointmentsPage from './src/components/pages/MyAppointmentsPage';
+import MyMessagesPage from './src/components/pages/MyMessagesPage';
 
 const AppNavigation = createSwitchNavigator(
     {
@@ -18,6 +19,7 @@ const AppNavigation = createSwitchNavigator(
         Welcome: { screen: Home },
         DoctorsPage: { screen: MyDoctorsPage },
         AppointmentsPage: { screen: MyAppointmentsPage },
+        MessagesPage: { screen: MyMessagesPage },
         DoctorDetailView: { screen: MyDoctorDetailsPage },
     },
 );

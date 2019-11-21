@@ -20,7 +20,6 @@ class MyAppointmentsPage extends React.Component<NavProps, { appointments: Appoi
             pageTitle="My Appointments"
             navigation={this.props.navigation}
         >
-            <Text>{appointments.length} appointments here</Text>
             {
                 appointments.map((appointment: Appointment) =>
                     <AppointmentCard

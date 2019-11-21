@@ -20,6 +20,10 @@ class NavTemplate extends React.Component<Props & NavProps> {
         this.props.navigation.navigate("AppointmentsPage");
     }
 
+    visitMessages = () => {
+        this.props.navigation.navigate("MessagesPage");
+    }
+
     goHome = () => {
         this.props.navigation.navigate("Welcome")
     }
@@ -98,6 +102,13 @@ class NavTemplate extends React.Component<Props & NavProps> {
                         active: this.props.pageTitle === "Home",
                         iconName: "home",
                     },
+                    {
+                        label: "Messages",
+                        testID: "MessageNavButton",
+                        onPress: this.visitMessages,
+                        active: this.props.pageTitle === "My Messages",
+                        iconName: "send",
+                    }
                 ]}
             />
         </Container>;

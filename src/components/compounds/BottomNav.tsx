@@ -33,6 +33,7 @@ class BottomNav extends React.Component<BottomNavProps> {
                         />
                         <Text
                             style={{
+                                fontSize: 10,
                                 color: it.active
                                     ? activeColor
                                     : inactiveColor
