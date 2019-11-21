@@ -7,7 +7,7 @@ import MyDoctorDetailsPage from './src/components/pages/MyDoctorDetailsPage';
 import MyDoctorsPage from './src/components/pages/MyDoctorsPage';
 import { Home } from './src/components/pages/Home';
 import { Container } from "native-base";
-import { Feather } from '@expo/vector-icons';
+import { Feather, } from '@expo/vector-icons';
 import * as Font from 'expo-font'
 
 import DoctorProvider from './src/contexts/DoctorProvider';
@@ -36,6 +36,7 @@ class App extends Component<{}, { isReady: boolean }> {
             Whitney_bold: require('./assets/Whitney-Bold.otf'),
             Whitney_semi: require('./assets/Whitney-Semibld.otf'),
             ...Feather.font,
+            // ...FontAwesome.font,
         });
         this.setState({ isReady: true });
     }

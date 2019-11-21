@@ -8,13 +8,13 @@ import MyNovantApi from '../../system/MyNovant';
 import { Appointment } from '../../values/Appointment';
 import { AppointmentCard } from '../compounds/AppointmentCard';
 
-export class Home extends React.Component<NavProps, { appointments: Appointment[] }> {
-    state = { appointments: [] }
+export class Home extends React.Component<NavProps, { appointments: Appointment[], ready: boolean }> {
+    state = { appointments: [], ready: false }
 
     componentDidMount = async () => {
         let appointments = await MyNovantApi.appointments();
         console.log("!!! APPTS ---> ", appointments);
-        this.setState({ appointments });
+        this.setState({ appointments, ready: true });
     }
 
     openNovantHealthWebsite = () => {
@@ -26,7 +26,7 @@ export class Home extends React.Component<NavProps, { appointments: Appointment[
     };
 
     render() {
-        let { appointments } = this.state;
+        let { ready, appointments } = this.state;
         return (<NavTemplate
             pageTitle="Home"
             navigation={this.props.navigation}
@@ -39,7 +39,7 @@ export class Home extends React.Component<NavProps, { appointments: Appointment[
             }}>
                 Upcoming Appointments
             </Text>
-            <AppointmentCard {...appointments[0]} />
+            {ready && <AppointmentCard {...appointments[0]} />}
         </NavTemplate>);
     }
 }
