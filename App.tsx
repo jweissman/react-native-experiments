@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { createSwitchNavigator } from "react-navigation";
 import { createAppContainer } from "react-navigation";
-import { NavigationStackProp } from 'react-navigation-stack';
-import { Doctor } from './src/values/Doctor';
 import MyDoctorDetailsPage from './src/components/pages/MyDoctorDetailsPage';
 import MyDoctorsPage from './src/components/pages/MyDoctorsPage';
 import { Home } from './src/components/pages/Home';
-import { Container } from "native-base";
 import { Feather, } from '@expo/vector-icons';
 import * as Font from 'expo-font'
 

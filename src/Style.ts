@@ -6,6 +6,8 @@ const palette = {
     royalPurple: "#7841a5", // 'purply' 
     bossanova: '#3D2252',   // grape II (part deux)
     wildsand: '#f4f4f4',
+    coolGrey: "#a7a8aa",
+    warmGrey: "#717171"
 };
 
 const styles = StyleSheet.create({
