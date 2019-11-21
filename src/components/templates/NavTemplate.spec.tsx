@@ -48,6 +48,9 @@ describe("NavTemplate", () => {
                 let myHome = findByTestID("HomeNavButton", wrapper)
                 expect(myHome.exists()).toBe(true)
             })
+
+            test.todo("messages")
+            test.todo("appointments")
         });
     })
 })

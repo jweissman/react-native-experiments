@@ -6,7 +6,9 @@ const palette = {
     royalPurple: "#7841a5", // 'purply' 
     bossanova: '#3D2252',   // grape II (part deux)
     wildsand: '#f4f4f4',
+    // mildsand: '#f6f6f6',
     aluminium: "#a7a8aa",
+    alto: '#d3d3d3',
     warmGrey: "#717171"
 };
 

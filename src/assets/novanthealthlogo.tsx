@@ -38,4 +38,4 @@ const xml = `<svg width="130px" height="27px" viewBox="0 0 130 27" version="1.1"
     </g>
 </svg>`
 
-export default () => <SvgXml xml={xml} width={"100%"} height={"100%"} />
+export default ({testID}: { testID: string }) => <SvgXml testID={testID} xml={xml} width={"100%"} height={"100%"} />

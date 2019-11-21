@@ -46,7 +46,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                     </Button>
                 </Left>
                 <Body style={{ flex: 1 }}>
-                    <NovantHealthLogo />
+                    <NovantHealthLogo testID="logo" />
                 </Body>
                 <Right style={{ flex: 1 }}>
                     <Button
@@ -94,6 +94,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                         onPress: this.visitAppointments,
                         active: this.props.pageTitle === "My Appointments",
                         iconName: "calendar",
+                        wide: true,
                     },
                     {
                         label: "Home",
@@ -101,6 +102,7 @@ class NavTemplate extends React.Component<Props & NavProps> {
                         onPress: this.goHome,
                         active: this.props.pageTitle === "Home",
                         iconName: "home",
+                        size: 'large',
                     },
                     {
                         label: "Messages",
@@ -108,6 +110,14 @@ class NavTemplate extends React.Component<Props & NavProps> {
                         onPress: this.visitMessages,
                         active: this.props.pageTitle === "My Messages",
                         iconName: "send",
+                        wide: true,
+                    },
+                    {
+                        label: "More",
+                        testID: "MoreNavButton",
+                        onPress: this.visitMessages,
+                        active: this.props.pageTitle === "More",
+                        iconName: "map",
                     }
                 ]}
             />

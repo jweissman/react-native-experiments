@@ -20,12 +20,12 @@ describe('Patty Patient', () => {
         await logMeIn();
     });
 
-    it('should login with valid credentials', async () => {
+    it('logs in with valid credentials', async () => {
         // then i'm taken to homepage
         await expect(element(by.id("PageTitle"))).toHaveLabel("Home")
     })
 
-    it('should logout', async () => {
+    it('logs out', async () => {
         // given i'm on the home page
         await expect(element(by.id("PageTitle"))).toHaveLabel("Home")
 
@@ -36,7 +36,7 @@ describe('Patty Patient', () => {
         await expect(element(by.id("loginButton"))).toExist();
     });
 
-    it('should navigate to my list of doctors', async () => {
+    it('navigates to her providers', async () => {
         await expect(element(by.id("PageTitle"))).toHaveLabel("Home");
         await expect(element(by.id("MyDoctorsNavButton"))).toExist();
         await element(by.id("MyDoctorsNavButton")).tap();
@@ -52,4 +52,13 @@ describe('Patty Patient', () => {
         await element(by.id("HomeNavButton")).tap();
         await expect(element(by.id("PageTitle"))).toHaveLabel("Home");
     });
+
+    it("navigates to her appointments", async () => {
+        await expect(element(by.id("PageTitle"))).toHaveLabel("Home");
+        await expect(element(by.id("MyAppointmentsNavButton"))).toExist();
+        await element(by.id("MyAppointmentsNavButton")).tap();
+        await expect(element(by.id("PageTitle"))).toHaveLabel("My Appointments");
+    })
+
+    test.todo("navigates to her messages")
 });

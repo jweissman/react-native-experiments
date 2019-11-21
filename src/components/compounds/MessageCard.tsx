@@ -37,16 +37,12 @@ export default class MessageCard extends React.Component<Message> {
                                 flexDirection: 'row',
                                 height: 24,
                                 alignItems: 'center',
-                                // borderWidth: 1,
-                                // borderColor: 'blue'
                             }}>
                                 <Text
                                     style={{
                                         color: palette.warmGrey,
                                         fontSize: 15,
                                         marginRight: 6,
-                                        // borderWidth: 1,
-                                        // borderColor: 'red'
                                     }}
                                 >{moment(message.dateTimeSent).format("h:mm")}</Text>
                                 <Icon
@@ -54,8 +50,6 @@ export default class MessageCard extends React.Component<Message> {
                                     style={{
                                         color: palette.aluminium,
                                         fontSize: 24,
-                                        // borderWidth: 1,
-                                        // borderColor: 'green'
                                     }}
                                 />
                             </View>
